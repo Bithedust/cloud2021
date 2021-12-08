@@ -10,7 +10,7 @@ spring:
         git:
           uri: git@github.com:Bithedust/Springcloud-config.git # Github上的仓库名
           search-paths: #搜索目录
-      #            -spring
+      #            -Springcloud-config
       label: master #读取分支
 
 
