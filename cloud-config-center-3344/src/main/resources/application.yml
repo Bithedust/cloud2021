@@ -9,10 +9,9 @@ spring:
       server:
         git:
           uri: git@github.com:Bithedust/Springcloud-config.git # Github上的仓库名
-          search-paths: #搜索目录
-      #            -Springcloud-config
-      label: master #读取分支
-
+#          search-paths: '*' #搜索目录
+          strict-host-key-checking: false
+      label: master
 
 eureka:
   client:
@@ -20,4 +19,3 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:7001/eureka
-
