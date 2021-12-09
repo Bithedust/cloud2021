@@ -12,6 +12,12 @@ spring:
 #          search-paths: '*' #搜索目录
           strict-host-key-checking: false
       label: master
+  rabbitmq:
+    host: 192.168.200.132
+    port: 5672
+    username: admin
+    password: admin
+
 
 eureka:
   client:
@@ -19,3 +25,9 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:7001/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'bus-refresh'
