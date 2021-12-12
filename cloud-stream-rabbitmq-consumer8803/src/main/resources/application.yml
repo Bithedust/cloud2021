@@ -19,6 +19,7 @@ spring:
           destination: studyExchange
           content-type: application/json
           binder: defaultRabbit
+          group: nickB
 
 eureka:
   client:
