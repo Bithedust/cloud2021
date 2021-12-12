@@ -5,18 +5,17 @@ server:
 spring:
   application:
     name: cloud-stream-provider
+
+  rabbitmq: # 设置 rabbitmq 的相关的环境配置
+    host: 192.168.200.132
+    port: 5672
+    username: admin
+    password: admin
   cloud:
     stream:
       binders: # 在此处配置要绑定的 rabbitmq 的服务信息
         defaultRabbit: # 表示定义的名称，用于 binding 的整合
           type: rabbit # 消息组件的类型
-          enviroment:  # 设置 rabbitmq 的相关的环境配置
-            spring:
-              rabbitmq:
-                host: 192.168.200.132
-                port: 5672
-                username: admin
-                password: admin
       bindings: # 服务的整合处理
         output: # 这个名称是一个通道的名称
           destination: studyExchange      # 表示要使用的 Exchange 名称定义
@@ -25,7 +24,8 @@ spring:
 
 eureka:
   client:
-    service-url: http://eureka7001.com:7001/eureka
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka
   instance:
     lease-renewal-interval-in-seconds: 2    # 设置心跳的时间间隔（默认是30s）
     lease-expiration-duration-in-seconds: 5 # 两次心跳的间隔时间（默认是90s）
