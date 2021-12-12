@@ -19,10 +19,17 @@ spring:
                 password: admin
       bindings: # 服务的整合处理
         output: # 这个名称是一个通道的名称
-          destination: studyExchange # 表示要使用的 Exchange 名称定义
-          content-type: application/json # 设置消息类型，本次为 json，文本则设置为 "text/plain"
-        binder: defaultRabbit #设置要绑定的消息服务的具体设置
+          destination: studyExchange      # 表示要使用的 Exchange 名称定义
+          content-type: application/json  # 设置消息类型，本次为 json，文本则设置为 "text/plain"
+          binder: defaultRabbit           # 设置要绑定的消息服务的具体设置
 
 eureka:
   client:
     service-url: http://eureka7001.com:7001/eureka
+  instance:
+    lease-renewal-interval-in-seconds: 2    # 设置心跳的时间间隔（默认是30s）
+    lease-expiration-duration-in-seconds: 5 # 两次心跳的间隔时间（默认是90s）
+    instance-id: send-8801.com              # 在eureka信息页面显示主机的名称
+    prefer-ip-address: true                 # 访问路径变为 IP 地址
+
+
