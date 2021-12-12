@@ -31,5 +31,3 @@ eureka:
     lease-expiration-duration-in-seconds: 5 # 两次心跳的间隔时间（默认是90s）
     instance-id: send-8801.com              # 在eureka信息页面显示主机的名称
     prefer-ip-address: true                 # 访问路径变为 IP 地址
-
-
