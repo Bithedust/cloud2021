@@ -31,6 +31,7 @@
         <module>cloud-config-client-3366</module>
         <module>cloud-stream-rabbitmq-provider8801</module>
         <module>cloud-stream-rabbitmq-consumer8802</module>
+        <module>cloudalibaba-provider-payment9001</module>
     </modules>
 
     <properties>
@@ -101,6 +102,14 @@
                 <version>${lombok.version}</version>
                 <optional>true</optional>
             </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>2.1.0.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
