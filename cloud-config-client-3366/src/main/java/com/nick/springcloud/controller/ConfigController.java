@@ -16,9 +16,6 @@ public class ConfigController {
     @Value("${config.info}")
     private String configInfo;
 
-    @Value("${server.port}")
-    private String serverPort;
-
     @RequestMapping("/configInfo")
     public String getConfigInfo(){
         return configInfo;
