@@ -14,8 +14,14 @@ spring:
         dashboard: 127.0.0.1:8080
         # 默认 8719 端口，假如被占用会自动从 8719 开始依次 +1 扫描，直到找到未被占用的端口
         port: 8719
-
-
+      datasource:
+        flow:
+          nacos:
+            server-addr: localhost:8848
+            dataId: ${spring.application.name}-flow-rules
+            groupId: FLOW_GROUP
+            data-type: json
+            rule-type: flow
 
 
 management:

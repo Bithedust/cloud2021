@@ -1,0 +1,49 @@
+server:
+  port: 2001
+
+spring:
+  application:
+    name: seata-order-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        namespace: d5704156-0df0-4bfa-a2b6-fb5744e063f6
+        group: SEATA_GROUP
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/seata_order?useSSL=false&characterEncoding=utf8&serverTimezone=UTC
+    username: root
+    password: root
+
+
+seata:
+  application-id: ${spring.application.name}
+  tx-service-group: default_tx_group
+  enable-auto-data-source-proxy: false
+  service:
+    vgroup-mapping:
+      default_tx_group: default
+
+  registry:
+    type: nacos
+    nacos:
+      cluster: default
+      namespace: d5704156-0df0-4bfa-a2b6-fb5744e063f6
+      server-addr: localhost:8848
+      group: SEATA_GROUP
+  config:
+    type: nacos
+    nacos:
+      group: SEATA_GROUP
+      namespace: d5704156-0df0-4bfa-a2b6-fb5744e063f6
+      server-addr: localhost:8848
+
+
+feign:
+  hystrix:
+    enabled: false
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+

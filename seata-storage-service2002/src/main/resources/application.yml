@@ -1,0 +1,50 @@
+server:
+  port: 2002
+
+spring:
+  application:
+    name: seata-storage-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        group: SEATA_GROUP
+        namespace: d5704156-0df0-4bfa-a2b6-fb5744e063f6
+        service: ${spring.application.name}
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/seata_order?useSSL=false&characterEncoding=utf8&serverTimezone=UTC
+    username: root
+    password: root
+
+
+seata:
+  enable-auto-data-source-proxy: false
+  tx-service-group: default_tx_group
+  service:
+    vgroup-mapping:
+      default_tx_group: default
+  registry:
+    type: nacos
+    nacos:
+      namespace: d5704156-0df0-4bfa-a2b6-fb5744e063f6
+      server-addr: localhost:8848
+      group: SEATA_GROUP
+      cluster: default
+  config:
+    type: nacos
+    nacos:
+      group: SEATA_GROUP
+      server-addr: localhost:8848
+      username: nacos
+      password: nacos
+      namespace: d5704156-0df0-4bfa-a2b6-fb5744e063f6
+
+
+feign:
+  hystrix:
+    enabled: false
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
